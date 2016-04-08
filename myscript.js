@@ -26,7 +26,7 @@
                 if (result2.snapshotLength > 0 && 1) {
                     
                     if (new String(result2.snapshotItem(0).innerText).trim() == "Workspace") {
-                        task4.style.display = "none;";
+                        task4.style.display = "none";
                         console.log("hide task4");                        
                     }
                 }            
