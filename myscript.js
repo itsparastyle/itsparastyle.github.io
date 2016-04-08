@@ -12,6 +12,7 @@
 
 (function() {
     'use strict';
+    
     var onDomLoaded = function () {
         var result = document.evaluate('//*[@id="tasks"]/div[4]', 
             document.documentElement, null,
@@ -27,11 +28,16 @@
                     
                     if (new String(result2.snapshotItem(0).innerText).trim() == "Workspace") {
                         task4.style.display = "none";
+                        
                         console.log("hide task4");                        
                     }
                 }            
         }
+        document.body.style.display = "block";
     };
     onDomLoaded();
+    if (window.location.pathname.split('/')[1] == 'job') {
+         document.body.style.display = "none";
+    }
     document.addEventListener('DOMContentLoaded', onDomLoaded);
 })();
