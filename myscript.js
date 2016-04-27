@@ -1,15 +1,3 @@
-// ==UserScript==
-// @name         New Userscript
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        http://localhost:8080/*
-// @grant        none
-// ==/UserScript==
-
-
-
 (function() {
     'use strict';
     
@@ -24,7 +12,7 @@
                 var result2 = document.evaluate("./a[2]",  task4, null,
                     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, 
                     null);
-                if (result2.snapshotLength > 0 && 1) {
+                if (result2.snapshotLength > 0) {
                     
                     if (new String(result2.snapshotItem(0).innerText).trim() == "Workspace") {
                         task4.style.display = "none";
@@ -35,9 +23,12 @@
         }
         document.body.style.display = "block";
     };
-    onDomLoaded();
+
     if (window.location.pathname.split('/')[1] == 'job') {
-         document.body.style.display = "none";
+        var style = document.createElement("style");
+            document.head.appendChild(style); // must append before you can access sheet property
+        var sheet = style.sheet;
+        sheet.insertRule("body {display: none;}");
     }
     document.addEventListener('DOMContentLoaded', onDomLoaded);
 })();
